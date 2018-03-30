@@ -1,0 +1,57 @@
+
+<div class="container">
+
+  <div class="col-sm-12">
+
+    <div class="col-sm-3">  
+    </div>
+
+    <div class="col-sm-6">  
+
+      <form name="site" (ngSubmit)="saveSite()" #bookForm="ngForm" class="site_form">
+        <h4>Add a Link</h4>
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" [(ngModel)] = "site.site_title"  placeholder="Enter Title" name="site_title">
+          </div>
+          <div class="form-group">
+            <label for="link">Link:</label>
+            <input type="url" class="form-control" id="link" [(ngModel)] = "site.site_link" placeholder="Enter Link" name="site_link">
+          
+
+             </div>
+        
+              
+              <input type="submit"  class="btn btn-success"  id="save" value="Submit Link" name="savelink">
+         
+      </form>
+
+      <table class="table">
+       
+          <tbody>
+            <tr *ngFor="let sites of sites">
+              <td class="tdclass">
+               
+               <div class="votes">{{ sites.site_vote }}
+               <p class="points">Points</p></div>
+              </td>
+             
+              <td>
+                <div><h2 class="site_title">{{ sites.site_title }}</h2></div>
+                <div><h6><a target="blank" class="link" href="{{sites.site_link}}">({{ sites.site_link }})</a></h6></div>
+                <div class="col-sm-6"><a (click)="upvote(sites._id,sites.site_vote )"> <span class="glyphicon glyphicon-arrow-up"></span>Upvote</a></div>
+                <div class="col-sm-6"><a (click)="downvote(sites._id,sites.site_vote )"> <span class="glyphicon glyphicon-arrow-down"></span>Downvote</a></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+
+    <div class="col-sm-3">  
+    </div>
+  </div>
+
+
+  
